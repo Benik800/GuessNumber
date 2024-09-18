@@ -128,11 +128,17 @@ p {
 }
 
 @media (max-width: 767px) {
+
+  h2{
+    font-size: 32px;
+  }
+
   body {
     overflow: hidden;
   }
   section {
     margin-top: 90px !important;
+    border: none;
   }
   #guessForm {
     flex-direction: column;

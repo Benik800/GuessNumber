@@ -60,3 +60,9 @@ submit.addEventListener("click", (event) => {
 reset.addEventListener("click", (event) => {
   location.reload();
 });
+
+document.querySelector(".form-control").addEventListener("keypress", function(e) {
+  if(e.key === "-") {
+      e.preventDefault();
+  }
+});
