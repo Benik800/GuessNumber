@@ -6,8 +6,8 @@ let incorrect = document.getElementById("prev");
 let progressbar = document.getElementById("remaining");
 let progressBar = document.getElementById('progress');
 
-const A = 1;
-const B = 100;
+const A = 100;
+const B = 140;
 let counts = Math.ceil(Math.log2(B - A + 1));
 let current_counts = counts;
 
@@ -42,12 +42,16 @@ submit.addEventListener("click", (event) => {
   } 
   else if (input_value === random_number && current_counts > 0) {
     number.value = '';
+    current_counts -= 1;
+    let remainingPercentage = Math.floor(current_counts / counts * 100);
+    progressBar.style.width = remainingPercentage + '%';
+    progressBar.innerText = current_counts
     reset.focus();
     answer.innerText = "Вы отгадали загаданное число! Было загадано " + random_number;
     number.disabled = true;
     submit.disabled = true;
   } 
-  if (current_counts === 0) {
+  if (current_counts === 0 && input_value !== random_number) {
     reset.focus();
     number.value = '';
     number.disabled = true;
@@ -61,8 +65,4 @@ reset.addEventListener("click", (event) => {
   location.reload();
 });
 
-document.querySelector(".form-control").addEventListener("keypress", function(e) {
-  if(e.key === "-") {
-      e.preventDefault();
-  }
-});
+
